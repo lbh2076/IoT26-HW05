@@ -1,0 +1,13 @@
+command_line:
+  - switch:
+      name: LED1
+      command_on: "bash -c 'gpioset --chip 0 17=1 &'"
+      command_off: "bash -c 'pkill -f \"gpioset --chip 0 17\" ; gpioset -t0 --chip 0 17=0'"
+      command_state: "gpioget --chip 0 17"
+      value_template: "{{ value == '1' }}"
+  - switch:
+      name: LED2
+      command_on: "bash -c 'gpioset --chip 0 27=1 &'"
+      command_off: "bash -c 'pkill -f \"gpioset --chip 0 27\" ; gpioset -t0 --chip 0 27=0'"
+      command_state: "gpioget --chip 0 27"
+      value_template: "{{ value == '1' }}"
